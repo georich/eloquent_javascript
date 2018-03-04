@@ -35,3 +35,29 @@ console.log(true && true); // true
 console.log(false || true) // true
 console.log(false || false) // false
 // CONDITIONAL OPERATOR
+console.log(true ? 1 : 2); // 1
+console.log(false ? 1 : 2); // 2
+// if true returns value after ?, if false returns value after :
+
+// EMPTY VALUES
+null
+undefined
+
+// AUTOMATIC TYPE CONVERSION
+8 * null // 0
+"5" - 1 // 4
+"5" + 1 // 51
+"five" * 2 // NaN
+false == 0 // true
+null == undefined // true
+null == 0 // false
+// both sides need to be null/defined to return true
+console.log(5 == "5"); // true
+console.log(5 === "5"); // false, also checking type
+
+// SHORT-CIRCUITING OF LOGICAL OPERATORS
+console.log(null || "user") // user
+console.log("Agnes" || "user") // Agnes
+// will return value on left if that can evaluate true, otherwise right
+//opposite for &&
+console.log(null && "user") // null
