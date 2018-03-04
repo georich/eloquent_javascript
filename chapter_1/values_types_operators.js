@@ -5,4 +5,16 @@
 
 // ARITHMETIC
 console.log(100 + 4 * 11)
-console.log(100 % 33)
+console.log(100 % 33) // modulo
+
+// SPECIAL NUMBERS
+Infinity
+-Infinity
+NaN // Not a number
+
+// STRINGS
+"A string would look like this"
+console.log("This is the first line\nAnd this is the second") // escape character as usual
+"con" + "cat" + "e" + "nate" // "concatenate"
+console.log(`half of 100 is ${100 / 2}`)
+// template literals (similar to f-string), requires the use of backticks `
