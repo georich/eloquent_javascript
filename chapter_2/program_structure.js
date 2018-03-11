@@ -67,3 +67,21 @@ for (let current = 20; current < 100; current++){
     break; // js also has continue like python
   } 
 }
+
+// SWITCH
+switch (prompt("What is the weather like?")) {
+  case "rainy":
+    console.log("Remember to bring an umbrella.");
+    break;
+  case "sunny":
+    console.log("Dress lightly.");
+  case "cloudy":
+    console.log("Go outside.");
+    break;
+  default:
+    console.log("Unknown weather type!");
+    break;
+}
+/* will start executing code when it reaches a label which matches
+i.e. entering sunny will run the cases for both sunny and cloudy
+because only the cloudy block contains the break */
