@@ -6,7 +6,7 @@ while (triangleCount < 8) {
 }
 
 triangleCount = 1;
-initalRow = "#";
+let initalRow = "#";
 while (triangleCount < 8) {
   console.log(initalRow);
   initalRow = initalRow + "#";
