@@ -28,7 +28,7 @@ console.log(typeof "x");
 console.log(3 > 2); // true
 console.log("Apple" == "Orange"); // false
 console.log("Apple" != "Orange") // true
-console.log(NaN == NaN);
+console.log(NaN == NaN); // false
 // LOGICAL OPERATORS
 console.log(true && false); // false
 console.log(true && true); // true
