@@ -41,3 +41,29 @@ if (num < 10) {
 } else {
   console.log("Large number");
 }
+
+// WHILE AND DO LOOPS
+let number = 0
+while (number <= 12) {
+  console.log(number);
+  number += 2;
+}
+
+let yourName;
+do {
+  yourName = prompt("Who are you?");
+} while (!yourName); // do while executes at least once since check is done at the end
+console.log(yourName);
+
+// FOR LOOPS
+for (let number = 0; number <= 12; number = number + 2) {
+  console.log(number);
+}
+
+// BREAKING OUT OF A LOOP
+for (let current = 20; current < 100; current++){
+  if (current % 7 == 0) {
+    console.log(current);
+    break; // js also has continue like python
+  } 
+}
