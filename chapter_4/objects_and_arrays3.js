@@ -25,3 +25,10 @@ function randomPointOnCircle(radius) {
   };
 }
 console.log(randomPointOnCircle(2));
+
+// DESTRUCTURING
+let {name} = {
+  name: "Faraji",
+  age: 23
+};
+console.log(name);
