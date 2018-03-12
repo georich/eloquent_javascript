@@ -45,3 +45,20 @@ const hummus = function(factor) {
   ingredient(0.5, "teaspoon", "cumin");
 };
 hummus(2);
+
+// FUNCTIONS AS VALUES
+let launchMissiles = function() {
+  missileSystem.launch("now");
+};
+
+// DECLARATION NOTATION
+/*
+function square(x) {
+  return x * x;
+}
+*/
+
+console.log("The future says:", future());
+function future() {
+  return "You'll never have flying cars";
+}
