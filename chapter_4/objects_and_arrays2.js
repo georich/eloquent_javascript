@@ -25,3 +25,23 @@ for (let i = 0; i < array.length; i++) { // common way to loop through all eleme
 for (let entry of array) { // modern way of looping through elements, good for arrays, strings and some others
   console.log(`${entry.events.length} events.`);
 }
+
+// FURTHER ARRAYOLOGY
+let todoList = [];
+function remember(task) {
+  todoList.push(task);
+}
+function getTask() {
+  return todoList.shift(); // removes element from end of array and returns it
+}
+function rememberUrgently(task) {
+  todoList.unshift(task); // adds task to start of array
+}
+
+console.log([1, 2, 3, 2, 1].indexOf(2)); // 1, returns the index of the first instance
+console.log([1, 2, 3, 2, 1].lastIndexOf(2)); // 3, returns fist instance beginning from the end
+
+console.log([0, 1, 2, 3, 4].slice(2, 4)); // [2, 3], end index is exclusive
+console.log([0, 1, 2, 3, 4].slice(2)); // [2, 3, 4] slices to end if end point not given
+
+console.log([1, 2].concat([3, 4])); // [1, 2, 3, 4]
