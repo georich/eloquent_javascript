@@ -17,3 +17,13 @@ const power = function(base, exponent) {
   return result;
 };
 console.log(power(2, 10));
+
+// PARAMETERS AND SCOPES
+let x = 10;
+if (true) {
+  let y = 20; // local to this block, const is similar
+  var z = 30;
+  console.log(x + y + z); // 60
+}
+// y is not visible here
+console.log(x + z); // 40
