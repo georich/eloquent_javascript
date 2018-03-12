@@ -74,3 +74,32 @@ function prepend(element, list) {
   return {value: element, rest: list};
 }
 console.log(prepend(10, prepend(20, null)));
+
+// DEEP COMPARISON
+let obj = {here: {is: "an"}, object: 2};
+
+function deepEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+  // check both a and b are objects or are not null
+  if (typeof a != "object" || typeof b != "object" || a == null || b == null) {
+    return false;
+  }
+  let keysOfA = Object.keys(a);
+  let keysOfB = Object.keys(b);
+  // easy check via length
+  if (keysOfA.length != keysOfB.length) {
+    return false;
+  }
+  // if lengths were the same need to check if each key is the same
+  for (let key of keysOfA) {
+    if (!keysOfB.includes(key) || !deepEqual(a[key], b[key])) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(deepEqual(obj, obj));
+console.log(deepEqual(obj, {here: 1, object: 2}));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
