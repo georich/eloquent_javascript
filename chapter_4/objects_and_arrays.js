@@ -55,4 +55,16 @@ let journal = [
     events: ["work", "ice cream", "cauliflower", "lasagna", "touched tree", "brushed teeth"],
     squirrel: false
   }
-] // can store data as an array of objects
+]; // can store data as an array of objects
+
+// MUTABILITY
+// numbers, strings and booleans are immutable
+
+let object1 = {value: 10};
+let object2 = object1;
+let object3 = {value: 10};
+console.log(object1 == object2); // true
+console.log(object1 == object3); // false
+// object 1 and 2 bind the same object, changing 1 will also change 2
+object1.value = 15;
+console.log(object2.value); // 15
