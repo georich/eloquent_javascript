@@ -15,3 +15,13 @@ console.log(max(...numbers)); // can also call functions with an array using ...
 
 let words = ["never", "fully"];
 console.log(["will", ...words, "understand"]); // ["will", "never", "fully", "understand"]
+
+// THE MATH OBJECT
+function randomPointOnCircle(radius) {
+  let angle = Math.random() * 2 * Math.PI;
+  return {
+    x: radius * Math.cos(angle),
+    y: radius * Math.sin(angle)
+  };
+}
+console.log(randomPointOnCircle(2));
