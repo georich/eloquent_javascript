@@ -9,14 +9,16 @@ const makeNoise = function() {
 };
 makeNoise()
 
+/*
 const power = function(base, exponent) {
-  let result = 1
+  let result = 1;
   for (let count = 0; count < exponent; count++) {
     result *= base;
   }
   return result;
 };
 console.log(power(2, 10));
+*/
 
 // PARAMETERS AND SCOPES
 let x = 10;
@@ -50,6 +52,9 @@ hummus(2);
 let launchMissiles = function() {
   missileSystem.launch("now");
 };
+// if (safeMode) {
+  // launchMissiles = function() {/* do nothing */};
+// }
 
 // DECLARATION NOTATION
 /*
@@ -62,3 +67,17 @@ console.log("The future says:", future());
 function future() {
   return "You'll never have flying cars";
 }
+/*
+since this is a function declaration it can be accessed
+before it is written top to bottom in the code
+*/
+
+// ARROW FUNCTIONS
+const power = (base, exponent) => {
+  let result = 1;
+  for (let count = 0; count < exponent; count++) {
+    result *= base;
+  }
+  return result;
+};
+console.log(power(2, 10));
