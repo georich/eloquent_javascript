@@ -25,3 +25,25 @@ function sum(numbers) {
 }
 console.log(sum(range(1, 10)));
 console.log(sum(range(5, 2, -1)));
+
+// REVERSING AN ARRAY
+function reverseArray(array) {
+  let newArray = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    newArray.push(array[i]);
+  }
+  return newArray;
+}
+console.log(reverseArray(["A", "B", "C"]));
+
+function reverseArrayInPlace(array) {
+  let heldValue = 0;
+  for (let i = 0; i <= Math.floor(array.length / 2); i++) {
+    heldValue = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = heldValue;
+  }
+}
+let arrayValue = [1, 2, 3, 4, 5];
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
