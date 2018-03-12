@@ -32,3 +32,8 @@ let {name} = {
   age: 23
 };
 console.log(name);
+
+// JSON
+let string = JSON.stringify({squirrel: false, events: ["weekend"]}); // takes a value and returns a JSON-encoded string
+console.log(string);
+console.log(JSON.parse(string).events); // ["weekend"]
