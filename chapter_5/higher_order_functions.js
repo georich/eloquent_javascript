@@ -63,3 +63,17 @@ repeat(3, n => {
 // SCRIPT DATA SET
 var SCRIPTS = require('./scripts');
 // has the keys: name, ranges, direction, year, living and link
+
+// FILTERING ARRAYS
+function filter(array, test) {
+  let passed = [];
+  for (let element of array) {
+    if (test(element)) {
+      passed.push(element);
+    }
+  }
+  return passed;
+}
+console.log(filter(SCRIPTS, script => script.living)); // is collecting all living languages
+// though filter is a standard method and a better example is
+console.log(SCRIPTS.filter(s => s.direction == "ttb"));
