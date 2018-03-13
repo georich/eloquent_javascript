@@ -91,3 +91,18 @@ let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
 console.log(map(rtlScripts, s => s.name));
 // also is a standard method
 console.log(rtlScripts.map(s => s.link));
+
+// SUMMARISING WITH REDUCE
+// built by repeatedly taking a single element from the array
+// and combining it with the previous value
+function reduce(array, combine, start) {
+  let current = start;
+  for (let element of array) {
+    current = combine(current, element);
+  }
+  return current;
+}
+console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0)); // 10
+// in the standard method the start pos. can be left out if the array
+// contains more than one element i.e.:
+console.log([1, 2, 3, 4].reduce((a, b) => a + b)); // 10
