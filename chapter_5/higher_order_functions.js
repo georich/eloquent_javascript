@@ -59,3 +59,7 @@ repeat(3, n => {
 // built in array method that provides something like a for/of loop
 // as a higher function
 ["A", "B"].forEach(l => console.log(l));
+
+// SCRIPT DATA SET
+var SCRIPTS = require('./scripts');
+// has the keys: name, ranges, direction, year, living and link
