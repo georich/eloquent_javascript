@@ -77,3 +77,17 @@ function filter(array, test) {
 console.log(filter(SCRIPTS, script => script.living)); // is collecting all living languages
 // though filter is a standard method and a better example is
 console.log(SCRIPTS.filter(s => s.direction == "ttb"));
+
+// TRANSFORMING WITH MAP
+// transforms an array by applying a function to all the elements
+function map(array, transform) {
+  let mapped = [];
+  for (let element of array) {
+    mapped.push(transform(element));
+  }
+  return mapped;
+}
+let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
+console.log(map(rtlScripts, s => s.name));
+// also is a standard method
+console.log(rtlScripts.map(s => s.link));
