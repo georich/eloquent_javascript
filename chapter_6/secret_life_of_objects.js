@@ -87,3 +87,13 @@ let killerRabbit = new Rabbit("killer");
 let blackRabbit = new Rabbit("black");
 // class declaration only allow methods to be added to the protoype, non function values
 // have to be manipulated after the class has been defined.
+
+// OVERRIDING DERIVED PROPERTIES
+Rabbit.prototype.teeth = "small";
+console.log(killerRabbit.teeth); // small
+killerRabbit.teeth = "long, sharp and bloody";
+console.log(killerRabbit.teeth); // long sharp and bloody
+console.log(blackRabbit.teeth); // small
+console.log(Rabbit.prototype.teeth); // small
+
+console.log(Array.prototype.toString == Object.prototype.toString); // false
