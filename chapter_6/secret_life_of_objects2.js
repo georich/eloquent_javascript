@@ -28,3 +28,21 @@ console.log("Is Jack's age known?", agesTwo.has("Jack")); // Is Jack's ... false
 // hasOwnProperty ignores the objects prototype
 console.log({x: 1}.hasOwnProperty("x")); // true
 console.log({x: 1}.hasOwnProperty("toString")); // false
+
+// POLYMORPHISM
+class Rabbit {
+  constructor(type){
+    this.type = type;
+  }
+  speak(line) {
+    console.log(`The ${this.type} rabbit says '${line}'`);
+  }
+}
+let killerRabbit = new Rabbit("killer");
+let blackRabbit = new Rabbit("black");
+// String function calls toString method on an object, can be manually entered
+Rabbit.prototype.toString = function() {
+  return `a ${this.type} rabbit`;
+};
+console.log(String(blackRabbit)); // a black rabbit
+// different kinds of objects can be plugged into toString, this is polymorphism
