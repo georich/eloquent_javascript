@@ -171,3 +171,25 @@ console.log(temp.celsius); // 30
 // Methods written with static are stored in the constructor,
 // so Temperature class allows you to write Temperature.fromFahrenheit(100)
 // to create a temperature using Fahrenheit
+
+// INHERITANCE
+class SymmetricMatrix extends Matrix {
+  constructor(size, content = (x, y) => undefined) {
+    super(size, size, (x, y) => { // similar to super in python OOP
+      if (x < y) {
+        return content(y, x);
+      } else {
+        return content(x, y);
+      }
+    });
+  }
+
+  set(x, y, value) { // redefining set but want to use original behaviour
+    super.set(x, y, value);
+    if (x != y) {
+      super.set(y, x, value);
+    }
+  }
+}
+let matrixTwo = new SymmetricMatrix(5, (x, y) => `${x},${y}`);
+console.log(matrixTwo.get(2, 3)); // 3, 2
