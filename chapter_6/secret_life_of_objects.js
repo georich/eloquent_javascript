@@ -55,3 +55,20 @@ killerRabbit.speak("SKREEE!");
 // it a function as a value
 // proto rabbit acts as a container for properties shared by all rabbits. Killer rabbit contains
 // properties applying only to itself
+
+// CLASSES
+// constructor function
+function makeRabbit(type) {
+  let rabbit = Object.create(protoRabbit);
+  rabbit.type = type;
+  return rabbit;
+}
+// using the new keyword, the function is treated as a constructor
+function Rabbit(type) {
+  this.type = type;
+}
+Rabbit.prototype.speak = function(line) {
+  console.log(`The ${this.type} rabbit says '${line}'`);
+};
+let weirdRabbit = new Rabbit("weird");
+// names of constructors are capitalised to differentiate them from other functions
