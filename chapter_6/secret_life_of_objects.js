@@ -72,3 +72,18 @@ Rabbit.prototype.speak = function(line) {
 };
 let weirdRabbit = new Rabbit("weird");
 // names of constructors are capitalised to differentiate them from other functions
+
+// CLASS NOTATION
+// in ES6 there is less awkward notation
+class Rabbit {
+  constructor(type){
+    this.type = type;
+  }
+  speak(line) {
+    console.log(`The ${this.type} rabbit says '${line}'`);
+  }
+}
+let killerRabbit = new Rabbit("killer");
+let blackRabbit = new Rabbit("black");
+// class declaration only allow methods to be added to the protoype, non function values
+// have to be manipulated after the class has been defined.
