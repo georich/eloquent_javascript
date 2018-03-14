@@ -66,3 +66,70 @@ let stringObject = {
   [toStringSymbol]() { return "a jute rope"; }
 };
 console.log(stringObject[toStringSymbol]()); // a jute rope
+
+// ITERATOR INTERFACE
+// object given to for/of is expected to be iterable, done with method Symbol.iterator.
+// returns an object that provides an iterator, calling next method returns next result.
+// result should have a value property, and a done property which is true when no more results
+// false otherwise. next, value and done are plain strings and not symbols.
+let okIterator = "OK"[Symbol.iterator]();
+console.log(okIterator.next()); // {value: "O", done: false}
+console.log(okIterator.next()); // {value: "K", done: false}
+console.log(okIterator.next()); // {value: undefined, done: true}
+// iterable data structure
+class Matrix {
+  constructor(width, height, content = (x, y) => undefined) {
+    this.width = width;
+    this.height = height;
+    this.content = [];
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width;  x++) {
+        this.content[y * width + x] = content(x, y);
+      }
+    }
+  }
+
+  get(x, y) {
+    return this.content[y * this.width + x];
+  }
+
+  set(x, y, value) {
+    this.content[y * this.width + x] = value;
+  }
+}
+// when looping over a matrix, usually intereseted in position of elements
+// as well as the elements themselves, so we'll produce x, y and value properties
+class MatrixIterator {
+  constructor(matrix) {
+    this.x = 0;
+    this.y = 0;
+    this.matrix = matrix;
+  }
+
+  next() {
+    if (this.y == this.matrix.height) {
+      return {done: true};
+    }
+    let value = {
+      x: this.x,
+      y: this.y,
+      value: this.matrix.get(this.x, this.y)
+    };
+    this.x++;
+    if (this.x == this.matrix.width) {
+      this.x = 0;
+      this.y++;
+    }
+    return {value, done: false};
+  }
+}
+// this class tracks progress of iterating over a matrix in x, y.
+Matrix.prototype[Symbol.iterator] = function() {
+  return new MatrixIterator(this);
+};
+// can now loop over a matrix using for/of
+let matrix = new Matrix(2, 2, (x, y) => `value ${x},${y}`);
+for (let {x, y, value} of matrix) {
+  console.log(x, y, value);
+}
