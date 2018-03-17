@@ -53,6 +53,10 @@ class Group {
     }
     return group;
   }
+
+  [Symbol.iterator]() {
+    return new GroupIterator(this);
+  }
 }
 
 let group = Group.from([0, 5, 10])
@@ -63,3 +67,25 @@ console.log(group.group);
 console.log(group.has(10));
 group.delete(10);
 console.log(group.group);
+
+// ITERABLE GROUPS
+class GroupIterator {
+  constructor(group) {
+    this.group = group;
+    this.position = 0;
+  }
+
+  next() {
+    if (this.position >= this.group.group.length) {
+      return {done: true};
+    } else {
+      let result = {value: this.group.group[this.position], done: false};
+      this.position++;
+      return result;
+    }
+  }
+}
+
+for (let value of Group.from(["a", "b", "c"])) {
+  console.log(value);
+}
