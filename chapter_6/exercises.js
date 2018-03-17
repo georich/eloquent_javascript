@@ -89,3 +89,8 @@ class GroupIterator {
 for (let value of Group.from(["a", "b", "c"])) {
   console.log(value);
 }
+
+// BORROWING A METHOD
+let map = {one: true, two: true, hasOwnPropety: true};
+
+console.log(Object.prototype.hasOwnProperty.call(map, "one"));
