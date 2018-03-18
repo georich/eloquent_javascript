@@ -49,6 +49,19 @@ class VillageState {
       return new VillageState(destination, parcels);
     }
   }
+
+  static random(parcelCount = 5) {
+    let parcels = [];
+    for (let i = 0; i < parcelCount; i++) {
+      let address = randomPick(Object.keys(roadGraph));
+      let place;
+      do {
+        place = randomPick(Object.keys(roadGraph));
+      } while (place == address);
+      parcels.push({place, address});
+    }
+    return new VillageState("Post Office", parcels);
+  }
 }
 
 let first = new VillageState(
@@ -67,3 +80,29 @@ let object = Object.freeze({value: 5});
 // rather than freeze
 object.value = 10;
 console.log(object.value); // 5
+
+// SIMULATION
+// we want the robot to remember things so we will include a memory property
+function runRobot(state, robot, memory) {
+  for (let turn = 0;; turn ++) {
+    if (state.parcels.length == 0) {
+      console.log(`Done in ${turn} turns`);
+      break;
+    }
+    let action = robot(state, memory);
+    state = state.move(action.direction);
+    memory = action.memory;
+    console.log(`Moved to ${action.direction}`);
+  }
+}
+// could have the robot just randomly move in a direction and it would
+// eventually hit all destinations
+function randomPick(array) {
+  let choice = Math.floor(Math.random() * array.length);
+  return array[choice];
+}
+function randomRobot(state) {
+  return {direction: randomPick(roadGraph[state.place])};
+}
+runRobot(VillageState.random(), randomRobot);
+// one example finished in 48 turns, slow because the path is random
