@@ -106,3 +106,22 @@ function randomRobot(state) {
 }
 runRobot(VillageState.random(), randomRobot);
 // one example finished in 48 turns, slow because the path is random
+
+// MAIL TRUCKS ROUTE
+// a real world solution is to use a route that hits all locations
+// and just run that route twice
+const mailRoute = [
+  "Alice's House", "Cabin", "Alice's House", "Bob's House",
+  "Town Hall", "Daria's House", "Ernie's House",
+  "Grete's House", "Shop", "Grete's House", "Farm",
+  "Marketplace", "Post Office"
+];
+// though we need to keep the robots 'memory'
+function routeRobot(state, memory) {
+  if (memory.length == 0) {
+    memory = mailRoute;
+  }
+  return {direction: memory[0], memory: memory.slice(1)};
+}
+runRobot(VillageState.random(), routeRobot, []);
+// now finishing in 20 turns
