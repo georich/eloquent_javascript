@@ -150,3 +150,42 @@ function transfer(from, amount) {
     }
   }
 }
+
+// SELECTIVE CATCHING
+for (;;) {
+  try {
+    let dir = promtDirection("Where?"); // typo!
+    console.log("You chose", dir);
+    break;
+  } catch (e) {
+    console.log("Not a valid direction. Try again!");
+  }
+}
+// will cause an infinite loop because catch ignores the exception
+// we can catch a specific kind of exception, comparing its message
+// property, but better to define a new type of error and use 
+// instanceof to identify iy
+
+class InputError extends Error {}
+
+function promptDirection(question) {
+  let result = prompt(question);
+  if (result.toLowerCase() == "left") return "L";
+  if (result.toLowerCase() == "right") return "R";
+  throw new InputError("Invalid direction: " + result);
+}
+
+// now we can catch the error more carefully
+for (;;) {
+  try {
+    let dir = promptDirection("Where?");
+    console.log("You chose ", dir);
+    break;
+  } catch (e) {
+    if (e instanceof InputError) {
+      console.log("Not a valid direction. Try again.");
+    } else {
+      throw e;
+    }
+  }
+}
