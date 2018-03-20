@@ -38,3 +38,14 @@ function goalOrientedRobot(state, memory) {
   
 }
 // subsets like TypeScript allow adding types to js
+
+// TESTING
+function test(label, body) {
+  if (!body()) {
+    console.log(`Failed: ${label}`);
+  }
+}
+
+test("convert Latin text to uppercase", () => {
+  return "hello".toUpperCase() == "HELLO";
+});
