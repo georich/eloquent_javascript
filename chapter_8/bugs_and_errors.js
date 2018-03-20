@@ -189,3 +189,13 @@ for (;;) {
     }
   }
 }
+
+// ASSERTIONS
+// checks inside a program that verify that something is the way it is
+// supposed to be, not for normal operation but for programmer mistakes
+function firstElement(array) {
+  if (array.length == 0) {
+    throw new Error("firstElement called with []");
+  }
+  return array[0];
+}
