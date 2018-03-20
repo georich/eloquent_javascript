@@ -28,3 +28,13 @@ let ferdinand = Person("Ferdinand"); // forgot new
 */
 // constructors created with class notation will always complain
 // regardless of strict mode
+
+// TYPES
+// JS is dynamic so will only consider types at runtime, will often convert
+// types if it thinks it helps
+// can comment types
+// (WorldState, Array) -> {direction: string, memory: Array}
+function goalOrientedRobot(state, memory) {
+  
+}
+// subsets like TypeScript allow adding types to js
