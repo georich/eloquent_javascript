@@ -95,3 +95,9 @@ console.log(getDate("30-1-2003"));
 // \b indicates a word boundary
 console.log(/cat/.test("concatenate")); // true
 console.log(/\bcat\b/.test("concatenate")); // false
+
+// CHOICE PATTERNS
+// can use pipe character to denote choice
+let animalCount = /\b\d+ (pig|cow|chicken)s?\b/;
+console.log(animalCount.test("15 pigs")); // true
+console.log(animalCount.test("15 pigchickens")); // false
