@@ -137,3 +137,22 @@ console.log(text.replace(regexp, "_$1_")); // _Harry_ is a suspicious character
 console.log("  word".search(/\S/)); // 2
 console.log("   ".search(/\S/)); // -1
 // no way with this method to indicate a starting position
+
+// LASTINDEX PROPERTY
+// lastIndex controls where the next match will start
+let pattern = /y/g;
+pattern.lastIndex = 3;
+let matchTwo = pattern.exec("xyzzy");
+console.log(matchTwo.index); // 4
+console.log(pattern.lastIndex); // 5
+
+let global = /abc/g;
+console.log(global.exec("xyz abc")); // ["abc"]
+let sticky = /abc/y;
+console.log(sticky.exec("xyz abc")); // null
+
+let digit = /\d/g;
+console.log(digit.exec("here it is: 1")); // ["1"]
+console.log(digit.exec("and now: 1")); // null
+
+console.log("Banana".match(/an/g)); // ["an", "an"]
