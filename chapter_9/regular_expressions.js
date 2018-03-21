@@ -101,3 +101,18 @@ console.log(/\bcat\b/.test("concatenate")); // false
 let animalCount = /\b\d+ (pig|cow|chicken)s?\b/;
 console.log(animalCount.test("15 pigs")); // true
 console.log(animalCount.test("15 pigchickens")); // false
+
+// REPLACE METHOD
+console.log("papa".replace("p", "m")); // mapa
+console.log("Borobudur".replace(/[ou]/, "a")); // Barobudur
+console.log("Borobudur".replace(/[ou]/g, "a")); // Barabadar, 'g' is the global flag
+
+// to swap names in a Lastname, Firstname set up
+console.log(
+  "Liskov, Barbara\nMcCarthy, John\nWadler, Philip".replace(/(\w+), (\w+)/g, "$2 $1"));
+// $1 and $2 in the replacement string refer to the parenthesized groups in the pattern
+// $1 is replaced by the text that matches first group, $2 by the second and so on
+
+// another example
+let s = "the cia and the fbi";
+console.log(s.replace(/\b(fbi|cia)\b/g, str => str.toUpperCase())); // the CIA and FBI
