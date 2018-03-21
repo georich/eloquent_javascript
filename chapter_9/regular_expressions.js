@@ -125,3 +125,15 @@ function stripComments(code) {
 console.log(stripComments("1 + /* 2 */3")); // 1 + 3
 console.log(stripComments("x = 10; // ten!")); // x = 10;
 console.log(stripComments("1 /* a */+/* b */ 1")); // 1 1
+
+// DYNAMICALLY CREATING REGEXP OBJECTS
+let name = "harry";
+let text = "Harry is a suspicious character.";
+let regexp = new RegExp("\\b(" + name + ")\\b", "gi"); // gi = global and case insensitive
+console.log(text.replace(regexp, "_$1_")); // _Harry_ is a suspicious character
+
+// SEARCH METHOD
+// like indexOf it returns -1 if not found
+console.log("  word".search(/\S/)); // 2
+console.log("   ".search(/\S/)); // -1
+// no way with this method to indicate a starting position
