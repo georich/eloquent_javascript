@@ -33,3 +33,22 @@ console.log(dateTime.test("30-Jan-2003 15:20")); // false
 let notBinary = /[^01]/;
 console.log(notBinary.test("1100100010100110")); // false
 console.log(notBinary.test("1100100010200110")); // true
+
+// REPEATING PARTS OF A PATTERN
+// a + after something indicates a repeating element
+console.log(/'\d+'/.test("'123'")); // true
+console.log(/'\d+'/.test("''")); // false
+console.log(/'\d*'/.test("'123'")); // true
+console.log(/'\d*'/.test("''")); // true
+// * is similar but also allows the pattern to match zero ties
+
+// ? allows a pattern to match zero or one times
+let neighbor = /neighbou?r/;
+console.log(neighbor.test("neighbour")); // true
+console.log(neighbor.test("neighbor")); // true
+
+// to indicate it should appear a precise number of times use
+// curly braces, {4} or for a range {2,4} 2-4 times exactly
+let dateTimeRange = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{2}/;
+console.log(dateTimeRange.test("30-1-2003 8:45")); // true
+// can also use open ended ranges {5, }, meaning 5 or more
