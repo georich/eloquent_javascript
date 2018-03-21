@@ -52,3 +52,25 @@ console.log(neighbor.test("neighbor")); // true
 let dateTimeRange = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{2}/;
 console.log(dateTimeRange.test("30-1-2003 8:45")); // true
 // can also use open ended ranges {5, }, meaning 5 or more
+
+// GROUPING SUBEXPRESSIONS
+// to use * or + on more than one element parentheses are needed
+let cartoonCrying = /boo+(hoo+)+/i;
+console.log(cartoonCrying.test("Boohoooohoohoooo")); // true
+// first and second + apply to the second o's in boo and hoo
+// the third + applies to the whole group (hoo+) matching one
+// or more hoo's. the i makes the regex case insensitive
+
+// MATCHES AND GROUPS
+// .exec will return null for no match otherwise will return an object
+// with info on the match
+let match = /\d+/.exec("one two 100");
+console.log(match); // ['100', index: 8, input: 'one two 100']
+console.log(match.index); // 8
+
+// string values have a match that behaves similarly
+console.log("one two 100".match(/\d+/)); // ["100", index: 8, input: 'one two 100']
+let quotedText = /'([^']*)'/;
+console.log(quotedText.exec("she said 'hello'"));
+// when a group doesn't match at all it will yield undefined in the array
+// if it matches multiple times, only the last match will be in the array
