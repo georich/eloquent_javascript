@@ -89,3 +89,9 @@ function getDate(string) {
 }
 // undescore is used to ignore the full match element from exec
 console.log(getDate("30-1-2003"));
+
+// WORD AND STRING BOUNDARIES
+// ^ and $ indicate the start and end of an input string
+// \b indicates a word boundary
+console.log(/cat/.test("concatenate")); // true
+console.log(/\bcat\b/.test("concatenate")); // false
