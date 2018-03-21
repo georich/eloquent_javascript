@@ -23,3 +23,25 @@ console.log(evalAndReturnX("var x = 2")); // 2
 // the function body
 let plusOne = Function("n", "return n + 1");
 console.log(plusOne(4)); // 5
+
+// COMMONJS
+// main concept is that of a function called require
+// examples
+// const ordinal = require("ordinal");
+// const {days, months} = require("date-names");
+// interface of ordinal is a single function, whereas date-names exports
+// an object containing multiple things
+
+// const {parse} = require("ini") // using a package from npm
+
+// ECMASCRIPT MODULES
+// import ordinal from "ordinal";
+// import {days, months} from "date-names";
+
+// export function formatDate(date, format) {/* ... */}
+
+// if you import a module without braces you get the default binding
+// to create a default binding use
+export default ["Winter", "Spring", "Summer", "Autumn"];
+// can rename imported binding
+// import {days as dayNames} from "date-names";
