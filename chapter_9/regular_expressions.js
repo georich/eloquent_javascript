@@ -156,3 +156,13 @@ console.log(digit.exec("here it is: 1")); // ["1"]
 console.log(digit.exec("and now: 1")); // null
 
 console.log("Banana".match(/an/g)); // ["an", "an"]
+
+// LOOPING OVER MATCHES
+let input = "A string with 3 numbers in it... 42 and 88.";
+let number = /\b\d+\b/g;
+let matched;
+while (matched = number.exec(input)) {
+  console.log("Found", matched[0], "at", matched.index);
+}
+// putting the exec method in the while condition runs it until no
+// more matches are found
