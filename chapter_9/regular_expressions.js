@@ -116,3 +116,12 @@ console.log(
 // another example
 let s = "the cia and the fbi";
 console.log(s.replace(/\b(fbi|cia)\b/g, str => str.toUpperCase())); // the CIA and FBI
+
+// GREED
+// possible to use replace to write a function that removes comments from js code
+function stripComments(code) {
+  return code.replace(/\/\/.*|\/\*[^]*?\*\//g, "");
+}
+console.log(stripComments("1 + /* 2 */3")); // 1 + 3
+console.log(stripComments("x = 10; // ten!")); // x = 10;
+console.log(stripComments("1 /* a */+/* b */ 1")); // 1 1
