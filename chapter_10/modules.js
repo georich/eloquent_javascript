@@ -16,3 +16,10 @@ function evalAndReturnX(code) {
   return x;
 }
 console.log(evalAndReturnX("var x = 2")); // 2
+
+// less scary way is the Function constructor
+// two arguments, string contained comma-separated
+// list of argument names and a string containing
+// the function body
+let plusOne = Function("n", "return n + 1");
+console.log(plusOne(4)); // 5
