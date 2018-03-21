@@ -74,3 +74,18 @@ let quotedText = /'([^']*)'/;
 console.log(quotedText.exec("she said 'hello'"));
 // when a group doesn't match at all it will yield undefined in the array
 // if it matches multiple times, only the last match will be in the array
+
+// THE DATE CLASS
+console.log(new Date()); // will get the current date or time
+console.log(new Date(2009, 11, 9)); // can produce a specific date
+console.log(new Date(2009, 11, 9, 12, 59, 59, 999)); // months start at 0 so 11 is Dec
+console.log(new Date(2013, 11, 19).getTime()); // milliseconds passed since 1970
+console.log(new Date(1387407600000)); // milliseconds passed in from previous line
+
+// can create a function to create a date object from a string
+function getDate(string) {
+  let [_, day, month, year] = /(\d{1,2})-(\d{1,2})-(\d{4})/.exec(string);
+  return new Date(year, month - 1, day);
+}
+// undescore is used to ignore the full match element from exec
+console.log(getDate("30-1-2003"));
