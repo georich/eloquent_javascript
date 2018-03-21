@@ -66,3 +66,4 @@ try {
 }
 
 console.log(box.locked);
+console.log(box.content);
