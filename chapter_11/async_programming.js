@@ -64,3 +64,15 @@ function storage(nest, name) {
   });
 }
 storage(bigOak, "enemies").then(value => console.log("Got", value));
+
+// FAILURE
+/*
+callbacks make it difficult to make sure failures are reported
+convention is first argument to callback is to indicate it failed,
+second is value produced when successful. 
+promises make this easier, rejections are auto passed to the new promise
+that is returned by then, when a handler throws an exception, the promise produced
+by it's then is rejected. like resolving a promise yields a value, rejecting 
+provides a reason of rejection. Promise.reject creates a new immediately rejected
+promise. Promises have a catch method, registers a handler to be called when
+promise is rejected.
