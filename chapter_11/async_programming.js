@@ -46,3 +46,21 @@ bigOak.send(
   "Let's caw loudly at 7PM",
   () => console.log("Note delivered.")
 );
+
+// PROMISES
+// A promise is an async action that may complete at some point
+// and produce a value. Notifies when its value is available.
+// Easiest via Promise.resolve
+
+let fifteen = Promise.resolve(15);
+fifteen.then(value => console.log(`Got ${value}`)); // Got 15
+
+// to get the result of the promise the then method is used.
+// then also returns another promise. Can also use Promise
+// as a constructor
+function storage(nest, name) {
+  return new Promise(resolve => {
+    nest.readStorage(name, result => resolve(result));
+  });
+}
+storage(bigOak, "enemies").then(value => console.log("Got", value));
