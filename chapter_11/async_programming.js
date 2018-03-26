@@ -116,3 +116,18 @@ function requestType(name, handler) {
 // it isn't one
 // handler had to be wrapped in try block to make sure any exceptions
 // raised are given to the callback
+
+// COLLECTIONS OF PROMISES
+// Promise.all is useful, it returns a promise after waiting for all promises
+// in an array to resolve, and then resolves an array of values that these promises
+// produced, if any promise is rejected the Promise.all is rejected
+requestType("ping", () => "pong");
+function availableNeighbors(nest) {
+  let requests = nest.neighbors.map(neighbor => {
+    return request(nest, neighbor, "ping").then(
+      () => true, () => false);
+  });
+  return Promise.all(requests).then(result => {
+    return nest.neighbors.filter((_, i) => result[i]);
+  });
+}
