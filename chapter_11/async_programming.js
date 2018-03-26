@@ -76,3 +76,43 @@ by it's then is rejected. like resolving a promise yields a value, rejecting
 provides a reason of rejection. Promise.reject creates a new immediately rejected
 promise. Promises have a catch method, registers a handler to be called when
 promise is rejected.
+*/
+
+// NETWORKS ARE HARD
+class Timeout extends Error {}
+
+function request(nest, target, type, content) {
+  return new Promise((resolve, request) => {
+    let done = false;
+    function attempt(n) {
+      nest.send(target, type, content, (failed, value) => {
+        done = true;
+        if (failed) reject(failed);
+        else resolve(value);
+      });
+      setTimeout(() => {
+        if (done) return;
+        else if (n < 3) attempt(n + 1);
+        else reject(new Timeout("Timed out"));
+      }, 250);
+    }
+    attempt(1);
+  });
+}
+
+// can define a wrapper for request
+function requestType(name, handler) {
+  defineRequestType(name, (nest, content, source, callback) => {
+    try {
+      Promise.resolve(handler(nest, content, source)).then(
+        response => callback(null, response), failure => callback(failure)
+      );
+    } catch (exception) {
+      callback(exception);
+    }
+  });
+}
+// Promise.resolve is used to convert a returned value to a promise if 
+// it isn't one
+// handler had to be wrapped in try block to make sure any exceptions
+// raised are given to the callback
